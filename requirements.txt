@@ -1,0 +1,5 @@
+Django==3.2.8
+djangorestframework==3.12.4
+opencv-python==4.5.3.56
+numpy==1.21.2
+docker==5.0.0
