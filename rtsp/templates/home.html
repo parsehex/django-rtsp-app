@@ -9,11 +9,15 @@
 			type="text/css"
 			href="{% static 'css/styles.css' %}"
 		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		/>
 	</head>
 	<body class="bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
 		<div class="relative py-3 sm:max-w-xl sm:mx-auto">
 			<div
-				class="relative px-2 py-5 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-5"
+				class="relative px-2 py-3 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-5"
 			>
 				<div class="max-w-md mx-auto">
 					<div class="flex items-center space-x-5">
@@ -24,7 +28,16 @@
 							<p class="text-sm text-gray-500 font-normal leading-relaxed">
 								<a href="{% url 'admin:index' %}">Admin Site</a>
 								<br />
+								<button
+									type="button"
+									class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+									data-toggle="modal"
+									data-target="#myModal"
+								>
+									Add Camera
+								</button>
 							</p>
+							{% include 'camera_modal.html' %}
 						</div>
 					</div>
 					<div class="grid grid-cols-2 gap-4">
@@ -49,5 +62,8 @@
 				</div>
 			</div>
 		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	</body>
 </html>

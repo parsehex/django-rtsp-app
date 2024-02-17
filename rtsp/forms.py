@@ -1,5 +1,6 @@
 from django import forms
 from django.core.validators import URLValidator
+from crispy_forms.helper import FormHelper
 from .models import CameraFeed
 
 class RTSPLinkField(forms.URLField):
@@ -21,4 +22,7 @@ class CameraFeedForm(forms.ModelForm):
 		fields = ['name', 'url', 'active']
 		exclude = ['thumbnail']
 
-# rtsp://192.168.0.208:554/1/hd
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.helper = FormHelper()
+		self.helper.form_tag = False
