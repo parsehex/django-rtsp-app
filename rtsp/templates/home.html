@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="{% static 'js/tailwind.config.js' %}"></script>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="{% static 'css/styles.css' %}"
+		/>
+	</head>
+	<body class="bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+		<div class="relative py-3 sm:max-w-xl sm:mx-auto">
+			<div
+				class="relative px-2 py-5 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-5"
+			>
+				<div class="max-w-md mx-auto">
+					<div class="flex items-center space-x-5">
+						<div
+							class="block pl-2 font-semibold text-xl self-start text-gray-700"
+						>
+							<h2 class="leading-relaxed">Camera Feeds</h2>
+							<p class="text-sm text-gray-500 font-normal leading-relaxed">
+								Check out the latest feeds from our cameras.
+							</p>
+						</div>
+					</div>
+					<div class="grid grid-cols-2 gap-4">
+						{% for feed in camera_feeds %}
+						<div class="divide-y divide-gray-200">
+							<div
+								class="py-4 text-base leading-6 space-y-2 text-gray-700 sm:text-lg sm:leading-7"
+							>
+								<p class="font-bold">{{ feed.name }}</p>
+								<a href="{% url 'rtsp_feed' feed.id %}">
+									<img
+										class="h-32 w-full object-cover"
+										src="{{ feed.thumbnail.url }}"
+										alt="{{ feed.name }}"
+									/>
+								</a>
+								<p><a href="{% url 'rtsp_feed' feed.id %}">View Camera</a></p>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
